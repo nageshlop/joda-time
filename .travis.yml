@@ -1,4 +1,7 @@
 language: java
+dist: xenial
+sudo: required
+
 cache:
   directories:
     - $HOME/.m2
@@ -7,9 +10,14 @@ matrix:
   include:
     - jdk: openjdk8
 # ppc64le support code
-    - jdk: openjdk8
+    - os: linux
       arch: ppc64le
-      dist: focal
+      jdk: openjdk8
+      addons:
+        apt:
+          packages:
+          - maven
+      
 script:
   - mvn -V --no-transfer-progress clean test
 after_success:
