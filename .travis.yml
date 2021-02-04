@@ -6,10 +6,8 @@ cache:
 matrix:
   include:
     - jdk: openjdk8
-    - jdk: openjdk11
-    - jdk: openjdk15
 # ppc64le support code
-    - jdk: openjdk15
+    - jdk: openjdk8
       arch: ppc64le
       dist: focal
 script:
