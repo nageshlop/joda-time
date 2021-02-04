@@ -4,17 +4,16 @@ sudo: required
 arch:
   - amd64
   - ppc64le
-  
-cache:
-  directories:
-    - $HOME/.m2
 
 jobs:
   include:
     jdk:
     - openjdk15    
+cache:
+  directories:
+    - $HOME/.m2
     
 script:
-  - mvn -V --no-transfer-progress clean test
+  - mvn -V --no-transfer-progress clean -Denforcer.skip=true test
 after_success:
   - mvn -V --no-transfer-progress clean cobertura:cobertura coveralls:report
