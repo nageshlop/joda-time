@@ -1,0 +1,18 @@
+language: java
+cache:
+  directories:
+    - $HOME/.m2
+
+matrix:
+  include:
+    - jdk: openjdk8
+    - jdk: openjdk11
+    - jdk: openjdk15
+# ppc64le support code
+    - jdk: openjdk15
+      arch: ppc64le
+      dist: focal
+script:
+  - mvn -V --no-transfer-progress clean test
+after_success:
+  - mvn -V --no-transfer-progress clean cobertura:cobertura coveralls:report
