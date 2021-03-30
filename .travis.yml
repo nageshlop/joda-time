@@ -1,17 +1,17 @@
 language: java
 sudo: false
-
+idst: bionic
 jdk:
   - openjdk8
-  - openjdk15
+  - openjdk10
 matrix:
   jobs:
-    - jdk: openjdk15
+    - jdk: openjdk10
       arch: ppc64le
-      dist: focal
+      dist: bionic
     - jdk: openjdk8
       arch: ppc64le
-      dist: focal
+      dist: bionic
 script:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
   - mvn test -B
